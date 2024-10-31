@@ -6,5 +6,7 @@
         <file>images/tower.png</file>
         <file>images/sobre.png</file>
         <file>images/central.png</file>
+        <file>images/calendario.png</file>
+        <file>styles.qss</file>
     </qresource>
 </RCC>

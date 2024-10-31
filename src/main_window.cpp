@@ -5,6 +5,9 @@
 #include <QToolBar>
 #include <QLabel>
 #include <QStatusBar>
+#include <QCalendarWidget>
+#include <QDockWidget>
+#include <QVBoxLayout>
 
 #include "include/main_window.h"
 
@@ -90,5 +93,21 @@ void MainWindow::createCentralWidgets(){
 }
 
 void MainWindow::createDocksWidgets(){
+    QCalendarWidget *calendar = new QCalendarWidget(this);
+    calendar->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
+    QFrame *frmDock = new QFrame(this);
+
+    QVBoxLayout *lytDock = new QVBoxLayout(frmDock);
+    lytDock->addStretch();
+    lytDock->addWidget(calendar);
+
+    QDockWidget *dckWidget = new QDockWidget(tr("Acessórios"),this);
+    dckWidget->setWidget(frmDock);
+
+    QAction* actToggleAcessorios = dckWidget->toggleViewAction();
+    actToggleAcessorios->setIcon(QIcon(":/images/calendario.png"));
+    tlbToolBar->addAction(actToggleAcessorios);
+
+    addDockWidget(Qt::RightDockWidgetArea, dckWidget);
 }
